@@ -4,7 +4,7 @@ public class Company implements Customer{
     String code;
     String name;
     String idNumber;
-    String postalAdress;
+    String postalAddress;
     String city;
     String province;
     String email;
@@ -28,9 +28,9 @@ public class Company implements Customer{
     public void setIdNumber(String idNumber) {this.idNumber = idNumber;}
 
     @Override
-    public String getPostalAddress() {return postalAdress;}
+    public String getPostalAddress() {return postalAddress;}
     @Override
-    public void setPostalAddress(String postalAddress) {this.postalAdress = postalAddress;}
+    public void setPostalAddress(String postalAddress) {this.postalAddress = postalAddress;}
 
     @Override
     public String getCity() {return city;}
