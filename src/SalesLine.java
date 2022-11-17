@@ -1,5 +1,6 @@
 public interface SalesLine {
 
+    //Metodos
     public String getCode();
     public void setCode(String code);
 

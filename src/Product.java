@@ -1,6 +1,6 @@
 public class Product implements  SalesLine{
 
-    //Atributos
+   //Atributos
     private String code;
     private String name;
     private String brand;
