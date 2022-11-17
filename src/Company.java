@@ -1,14 +1,14 @@
 public class Company implements Customer{
 
     //Atributos
-    String code;
-    String name;
-    String idNumber;
-    String postalAddress;
-    String city;
-    String province;
-    String email;
-    String phoneNumber;
+    private String code;
+    private String name;
+    private String idNumber;
+    private String postalAddress;
+    private String city;
+    private String province;
+    private String email;
+    private String phoneNumber;
 
 
     //Metodos
