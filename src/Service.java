@@ -1,5 +1,5 @@
 public class Service implements SalesLine{
-    
+
     //Atributos
     private String code;
     private String name;
