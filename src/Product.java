@@ -5,7 +5,7 @@ public class Product implements  SalesLine{
     private String name;
     private String brand;
     private String model;
-    private Float price;
+    private Double price;
     private VatRate vatRate;
 
     //Metodos
@@ -27,11 +27,9 @@ public class Product implements  SalesLine{
     public void setName(String name) {this.name = name;}
 
     @Override
-    public Float getPrice() {return price;}
-
+    public Double getPrice() {return price;}
     @Override
-    public void setPrice(Float price) {this.price = price;}
-
+    public void setPrice(Double price) {this.price = price;}
 
     public VatRate getVatRate() {return vatRate;}
     public void setVatRate(VatRate vatRate) {this.vatRate = vatRate;}
