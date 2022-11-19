@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Invoice {
@@ -7,8 +8,8 @@ public class Invoice {
     private Date date;
     private Float baseAmount;
     private Float total;
-    private Product product;
-    private Service service;
+    private ArrayList<Product> products = new ArrayList<>();
+    private ArrayList<Service> services = new ArrayList<>();
     private SelfEmployed selfEmployed;
     private Company company;
 
@@ -25,11 +26,11 @@ public class Invoice {
     public Float getTotal(){return total;}
     public void setTotal(Float total){this.total = total;}
 
-    public Product getProduct(){return product;}
-    public void setProduct(Product product){this.product = product;}
+    public ArrayList<Product> getProduct(){return this.products;}
+    public void addProduct(Product product){this.products.add(product);}
 
-    public Service getService() {return service;}
-    public void setService(Service service) {this.service = service;}
+    public ArrayList<Service> getServices() {return this.services;}
+    public void addService (Service service) {this.services.add(service);}
 
     public SelfEmployed getSelfEmployed(){return selfEmployed;}
     public void setSelfEmployed(SelfEmployed selfEmployed){this.selfEmployed = selfEmployed;}
