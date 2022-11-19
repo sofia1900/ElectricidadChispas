@@ -2,7 +2,7 @@ public class InvoicePrinter {
     public void print(Invoice invoice){
         System.out.println("Factura: " + invoice.getCode() + "|" + invoice.getDate());
 
-        //Falta un IF para saber si ha introducido un autonomo o una soliciedad
+        //Falta un IF para saber si ha introducido un autonomo o una sociedad
         System.out.println("Cliente: " + invoice.getSelfEmployed().getIdNumber() + " | " + invoice.getSelfEmployed().getFullName() +
                 " | " + invoice.getSelfEmployed().getPostalAddress() + " | " + invoice.getSelfEmployed().getCity() + " | " +
                 invoice.getSelfEmployed().getProvince()+ " | " + invoice.getSelfEmployed().getEmail());
