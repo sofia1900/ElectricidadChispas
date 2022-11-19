@@ -7,7 +7,7 @@ public interface SalesLine {
     public String getName();
     public void setName(String name);
 
-    public Float getPrice();
-    public void setPrice(Float price);
+    public Double getPrice();
+    public void setPrice(Double price);
 
 }
