@@ -3,7 +3,7 @@ public class Service implements SalesLine{
     //Atributos
     private String code;
     private String name;
-    private Float price;
+    private Double price;
     private VatRate vatRate;
 
 
@@ -20,10 +20,10 @@ public class Service implements SalesLine{
     public void setName(String name) {this.name = name;}
 
     @Override
-    public Float getPrice() {return price;}
+    public Double getPrice() {return price;}
 
     @Override
-    public void setPrice(Float price) {this.price = price;}
+    public void setPrice(Double price) {this.price = price;}
 
 
     public VatRate getVatRate(){return vatRate;}
