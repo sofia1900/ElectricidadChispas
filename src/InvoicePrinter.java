@@ -2,13 +2,15 @@ public class InvoicePrinter {
     public void print(Invoice invoice){
         System.out.println("Factura: " + invoice.getCode() + "|" + invoice.getDate());
 
-        //Falta un IF para saber si ha introducido un autonomo o una sociedad
-        System.out.println("Cliente: " + invoice.getSelfEmployed().getIdNumber() + " | " + invoice.getSelfEmployed().getFullName() +
-                " | " + invoice.getSelfEmployed().getPostalAddress() + " | " + invoice.getSelfEmployed().getCity() + " | " +
-                invoice.getSelfEmployed().getProvince()+ " | " + invoice.getSelfEmployed().getEmail());
-        System.out.println("Cliente: " + invoice.getCompany().getIdNumber()+ " | " + invoice.getCompany().getName()+ " | " +
-                invoice.getCompany().getPostalAddress() + " | " + invoice.getCompany().getCity() + " | " +
-                invoice.getCompany().getProvince() + " | " + invoice.getCompany().getEmail());
+        if (invoice.getSelfEmployed()!= null) {
+            System.out.println("Cliente: " + invoice.getSelfEmployed().getIdNumber() + " | " + invoice.getSelfEmployed().getFullName() +
+                    " | " + invoice.getSelfEmployed().getPostalAddress() + " | " + invoice.getSelfEmployed().getCity() + " | " +
+                    invoice.getSelfEmployed().getProvince() + " | " + invoice.getSelfEmployed().getEmail());
+        } else {
+            System.out.println("Cliente: " + invoice.getCompany().getIdNumber() + " | " + invoice.getCompany().getName() + " | " +
+                    invoice.getCompany().getPostalAddress() + " | " + invoice.getCompany().getCity() + " | " +
+                    invoice.getCompany().getProvince() + " | " + invoice.getCompany().getEmail());
+        }
 
         System.out.println("Linea de venta (producto|servicio): Codigo | Nombre | Precio | tipo IVA | Total");
         for (Integer i = 0 ; i < invoice.getProduct().size() ; i++){
