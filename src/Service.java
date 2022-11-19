@@ -4,7 +4,8 @@ public class Service implements SalesLine{
     private String code;
     private String name;
     private Float price;
-    private Integer vatRate;
+    private VatRate vatRate;
+
 
     //Metodos
     @Override
@@ -24,8 +25,7 @@ public class Service implements SalesLine{
     @Override
     public void setPrice(Float price) {this.price = price;}
 
-    @Override
-    public Integer getVatRate() {return vatRate;}
-    @Override
-    public void setVatRate(Integer vatRate) {this.vatRate = vatRate;}
+
+    public VatRate getVatRate(){return vatRate;}
+    public void setVatRate(VatRate vatRate){this.vatRate = vatRate;}
 }
