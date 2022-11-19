@@ -10,6 +10,4 @@ public interface SalesLine {
     public Float getPrice();
     public void setPrice(Float price);
 
-    public Integer getVatRate();
-    public void setVatRate(Integer vatRate);
 }
