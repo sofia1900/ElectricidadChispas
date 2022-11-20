@@ -22,5 +22,5 @@ public interface Customer {
     public void setEmail(String email);
 
     public String getPhoneNumber();
-    public void setPhoneNumber();
+    public void setPhoneNumber(String phoneNumber);
 }
