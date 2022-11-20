@@ -38,7 +38,7 @@ public class Invoice {
             total = total + (products.get(i).getPrice() + (products.get(i).getPrice()*products.get(i).getVatRate().getType()/100));
         }
         for (Integer j = 0 ; j < services.size(); j++){
-            baseAmount = baseAmount + (services.get(j).getPrice() + (services.get(j).getPrice()*services.get(j).getVatRate().getType()/100));
+            total = total + (services.get(j).getPrice() + (services.get(j).getPrice()*services.get(j).getVatRate().getType()/100));
         }
         return total;
     }
