@@ -30,7 +30,6 @@ public class Invoice {
         }
         return baseAmount;
     }
-    public void setBaseAmount(Double baseAmount){this.baseAmount = baseAmount;}
 
     public Double getTotal(){
         total = 0.0;
@@ -42,7 +41,6 @@ public class Invoice {
         }
         return total;
     }
-    public void setTotal(Double total){this.total = total;}
 
     public ArrayList<Product> getProduct(){return this.products;}
     public void addProduct(Product product){this.products.add(product);}
