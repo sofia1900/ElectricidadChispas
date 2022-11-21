@@ -45,6 +45,16 @@ public class Main {
         System.out.println("Introduce el TELEFONO de la sociedad");
         sociedad.setPhoneNumber(scanner.nextLine());
 
+        //Crear los tipos de IVA:
+        VatRate iva0 = new VatRate();
+        iva0.setType(0);
+        VatRate iva4 = new VatRate();
+        iva4.setType(4);
+        VatRate iva10 = new VatRate();
+        iva10.setType(10);
+        VatRate iva21 = new VatRate();
+        iva21.setType(21);
+
         //Producto1
         Product bombilla = new Product();
         System.out.println("Introduce el CODIGO del producto");
