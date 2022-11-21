@@ -166,6 +166,12 @@ public class Main {
         facturaAutonomo.setBaseAmount(facturaAutonomo.getBaseAmount());
         facturaAutonomo.setTotal(facturaAutonomo.getTotal());
 
+        //Imprimir factura
+        System.out.println("\nFactura AUTONOMO \n");
+        InvoicePrinter impFacturaAutonomo = new InvoicePrinter();
+        impFacturaAutonomo.print(facturaAutonomo);
+
+
         //Factura Sociedad
         Invoice facturaSociedad = new Invoice();
         System.out.println("Introduce el codigo de la factura");
@@ -180,6 +186,11 @@ public class Main {
         facturaSociedad.addService(servicio2);
         facturaSociedad.setBaseAmount(facturaSociedad.getBaseAmount());
         facturaSociedad.setTotal(facturaSociedad.getTotal());
+
+        //Imprimir factura
+        System.out.println("\n FACTURA SOCIEDAD\n");
+        InvoicePrinter impFacturaSociedad = new InvoicePrinter();
+        impFacturaSociedad.print(facturaSociedad);
 
     }
 }
