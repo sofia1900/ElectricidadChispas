@@ -1,3 +1,5 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Main {
@@ -146,6 +148,36 @@ public class Main {
             case 21: servicio2.setVatRate(iva21); break;
         }
         salto = scanner.nextLine();
+
+        //Factura Autonomo
+        Invoice facturaAutonomo = new Invoice();
+        System.out.println("Introduce el codigo de la factura");
+        facturaAutonomo.setCode(scanner.nextLine());
+        System.out.println("Introduce la fecha de la factura");
+        String fechaComoTexto = scanner.nextLine();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        Date fecha = sdf.parse(fechaComoTexto);
+        facturaAutonomo.setDate(fecha);
+        facturaAutonomo.setSelfEmployed(autonomo);
+        facturaAutonomo.addProduct(bombilla);
+        facturaAutonomo.addService(servicio1);
+        facturaAutonomo.setBaseAmount(facturaAutonomo.getBaseAmount());
+        facturaAutonomo.setTotal(facturaAutonomo.getTotal());
+
+        //Factura Sociedad
+        Invoice facturaSociedad = new Invoice();
+        System.out.println("Introduce el codigo de la factura");
+        facturaSociedad.setCode(scanner.nextLine());
+        System.out.println("Introduce la fecha de la factura");
+        fechaComoTexto = scanner.nextLine();
+        SimpleDateFormat sdf2 = new SimpleDateFormat("dd/MM/yyyy");
+        fecha = sdf2.parse(fechaComoTexto);
+        facturaSociedad.setDate(fecha);
+        facturaSociedad.setSelfEmployed(autonomo);
+        facturaSociedad.addProduct(cable);
+        facturaSociedad.addService(servicio2);
+        facturaSociedad.setBaseAmount(facturaSociedad.getBaseAmount());
+        facturaSociedad.setTotal(facturaSociedad.getTotal());
 
     }
 }
