@@ -2,8 +2,8 @@ public class Company implements Customer{
 
     //Atributos
     private String code;
-    private String name;
-    private String idNumber;
+    private String bussinesName;
+    private String cif;
     private String postalAddress;
     private String city;
     private String province;
@@ -18,14 +18,12 @@ public class Company implements Customer{
     public void setCode(String code) {this.code = code;}
 
     @Override
-    public String getName() {return name;}
-    @Override
-    public void setName(String name) {this.name = name;}
+    public String getName() {return bussinesName;}
+    public void setBussinesName(String bussinesName) {this.bussinesName = bussinesName;}
 
     @Override
-    public String getIdNumber() {return idNumber;}
-    @Override
-    public void setIdNumber(String idNumber) {this.idNumber = idNumber;}
+    public String getIdNumber() {return cif;}
+    public void setCif(String cif) {this.cif = cif;}
 
     @Override
     public String getPostalAddress() {return postalAddress;}

@@ -4,7 +4,7 @@ public class SelfEmployed implements Customer {
     private String code;
     private String name;
     private String surname;
-    private String idNumber;
+    private String dni;
     private String postalAddress;
     private String city;
     private String province;
@@ -12,23 +12,21 @@ public class SelfEmployed implements Customer {
     private String phoneNumber;
 
     //Metodos
-    public String getSurname (){ return surname;}
     public void setSurname(String surname){ this.surname = surname;}
-
     @Override
     public String getCode() {return code;}
     @Override
     public void setCode(String code) {this.code = code;}
 
     @Override
-    public String getName() {return name;}
-    @Override
+    public String getName() {
+        return name + " " + surname;
+    }
     public void setName(String name) {this.name = name;}
 
     @Override
-    public String getIdNumber() {return idNumber;}
-    @Override
-    public void setIdNumber(String idNumber) {this.idNumber = idNumber;}
+    public String getIdNumber() {return dni;}
+    public void setDni(String dni) {this.dni = dni;}
 
     @Override
     public String getPostalAddress() {return postalAddress;}
@@ -54,9 +52,5 @@ public class SelfEmployed implements Customer {
     public String getPhoneNumber() {return phoneNumber;}
     @Override
     public void setPhoneNumber(String phoneNumber) {this.phoneNumber = phoneNumber;}
-
-    public String getFullName(){
-        return this.name + " " + this.surname;
-    }
 
 }

@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Introduce los APELLIDOS del autonomo");
         autonomo.setSurname(scanner.nextLine());
         System.out.println("Introduce el DNI del autonomo");
-        autonomo.setIdNumber(scanner.nextLine());
+        autonomo.setDni(scanner.nextLine());
         System.out.println("Introduce la DIRECCION POSTAL del autonomo");
         autonomo.setPostalAddress(scanner.nextLine());
         System.out.println("Introduce la CIUDAD del autonomo");
@@ -30,14 +30,16 @@ public class Main {
         System.out.println("Introduce el TELEFONO del autonomo");
         autonomo.setPhoneNumber(scanner.nextLine());
 
+        printCliente(autonomo);
+
         //Sociedad
         Company sociedad = new Company();
         System.out.println("Introduce el CODIGO del cliente (sociedad)");
         sociedad.setCode(scanner.nextLine());
         System.out.println("Introduce el NOMBRE de la sociedad");
-        sociedad.setName(scanner.nextLine());
+        sociedad.setBussinesName(scanner.nextLine());
         System.out.println("Introduce el CIF de la sociedad");
-        sociedad.setIdNumber(scanner.nextLine());
+        sociedad.setCif(scanner.nextLine());
         System.out.println("Introduce la DIRECCION POSTAL de la sociedad");
         sociedad.setPostalAddress(scanner.nextLine());
         System.out.println("Introduce la POBLACION de la sociedad");
@@ -48,6 +50,8 @@ public class Main {
         sociedad.setEmail(scanner.nextLine());
         System.out.println("Introduce el TELEFONO de la sociedad");
         sociedad.setPhoneNumber(scanner.nextLine());
+
+        printCliente(sociedad);
 
         //Crear los tipos de IVA:
         VatRate iva0 = new VatRate();
@@ -182,4 +186,12 @@ public class Main {
         facturaSociedad.setTotal(facturaSociedad.getTotal());
 
     }
+
+    public static void printCliente(Customer customer){
+        System.out.println("\nCodigo: " + customer.getCode() + " | Nombre: " + customer.getName() + " | DNI/CIF: " + customer.getIdNumber() +
+                "\nDirecion postal: " + customer.getPostalAddress() + " | Poblacion: " + customer.getCity() + " | Provincia: " + customer.getProvince() +
+                "\nEmail: " + customer.getEmail() + " | Telefono: " + customer.getPhoneNumber() + "\n");
+    }
+
+
 }
