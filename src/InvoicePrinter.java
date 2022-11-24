@@ -3,7 +3,7 @@ public class InvoicePrinter {
         System.out.println("Factura: " + invoice.getCode() + "|" + invoice.getDate());
 
         if (invoice.getSelfEmployed()!= null) {
-            System.out.println("Cliente: " + invoice.getSelfEmployed().getIdNumber() + " | " + invoice.getSelfEmployed().getFullName() +
+            System.out.println("Cliente: " + invoice.getSelfEmployed().getIdNumber() + " | " + invoice.getSelfEmployed().getName() +
                     " | " + invoice.getSelfEmployed().getPostalAddress() + " | " + invoice.getSelfEmployed().getCity() + " | " +
                     invoice.getSelfEmployed().getProvince() + " | " + invoice.getSelfEmployed().getEmail());
         } else {
