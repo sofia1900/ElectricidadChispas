@@ -49,6 +49,108 @@ public class Main {
 
         printCliente(sociedad);
 
+        //Crear los tipos de IVA:
+        VatRate iva0 = new VatRate();
+        iva0.setType(0);
+        VatRate iva4 = new VatRate();
+        iva4.setType(4);
+        VatRate iva10 = new VatRate();
+        iva10.setType(10);
+        VatRate iva21 = new VatRate();
+        iva21.setType(21);
+
+        //Producto1
+        Product bombilla = new Product();
+        System.out.println("Introduce el CODIGO del producto");
+        bombilla.setCode(scanner.nextLine());
+        System.out.println("Introduce el NOMBRE del producto");
+        bombilla.setName(scanner.nextLine());
+        System.out.println("Introduce el MARCA del producto");
+        bombilla.setBrand(scanner.nextLine());
+        System.out.println("Introduce el MODELO del producto");
+        bombilla.setModel(scanner.nextLine());
+        System.out.println("Introduce el PRECIO del producto");
+        bombilla.setPrice(scanner.nextDouble());
+        Integer tipoIVA = 5;
+        do {
+            System.out.println("Introduce el TIPO DE IVA del producto (0 - 4 - 10 - 21)");
+            tipoIVA = scanner.nextInt();
+        }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
+        switch (tipoIVA){
+            case 0: bombilla.setVatRate(iva0);
+            case 4: bombilla.setVatRate(iva4);
+            case 10: bombilla.setVatRate(iva10);
+            case 21: bombilla.setVatRate(iva21);
+        }
+        String salto = scanner.nextLine(); //Esto es para que se coma el salto de linea que produce el scanner.nextInt
+
+        //Producto2
+        Product cable = new Product();
+        System.out.println("Introduce el CODIGO del producto");
+        cable.setCode(scanner.nextLine());
+        System.out.println("Introduce el NOMBRE del producto");
+        cable.setName(scanner.nextLine());
+        System.out.println("Introduce el MARCA del producto");
+        cable.setBrand(scanner.nextLine());
+        System.out.println("Introduce el MODELO del producto");
+        cable.setModel(scanner.nextLine());
+        System.out.println("Introduce el PRECIO del producto");
+        cable.setPrice(scanner.nextDouble());
+        tipoIVA = 5;
+        do {
+            System.out.println("Introduce el TIPO DE IVA del producto (0 - 4 - 10 - 21)");
+            tipoIVA = scanner.nextInt();
+        }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
+        switch (tipoIVA){
+            case 0: cable.setVatRate(iva0);
+            case 4: cable.setVatRate(iva4);
+            case 10: cable.setVatRate(iva10);
+            case 21: cable.setVatRate(iva21);
+        }
+        salto = scanner.nextLine();
+
+        //Servicio1
+        Service servicio1 = new Service();
+        System.out.println("Introduce el CODIGO del servicio");
+        servicio1.setCode(scanner.nextLine());
+        System.out.println("Introduce el NOMBRE del servicio");
+        servicio1.setName(scanner.nextLine());
+        System.out.println("Introduce el PRECIO del servicio");
+        servicio1.setPrice(scanner.nextDouble());
+        tipoIVA = 5;
+        do {
+            System.out.println("Introduce el TIPO DE IVA del servicio (0 - 4 - 10 - 21)");
+            tipoIVA = scanner.nextInt();
+        }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
+        switch (tipoIVA){
+            case 0: servicio1.setVatRate(iva0); break;
+            case 4: servicio1.setVatRate(iva4); break;
+            case 10: servicio1.setVatRate(iva10); break;
+            case 21: servicio1.setVatRate(iva21); break;
+        }
+        salto = scanner.nextLine();
+
+        //servicio2
+        Service servicio2 = new Service();
+        System.out.println("Introduce el CODIGO del servicio");
+        servicio2.setCode(scanner.nextLine());
+        System.out.println("Introduce el NOMBRE del servicio");
+        servicio2.setName(scanner.nextLine());
+        System.out.println("Introduce el PRECIO del servicio");
+        servicio2.setPrice(scanner.nextDouble());
+        tipoIVA = 5;
+        do {
+            System.out.println("Introduce el TIPO DE IVA del servicio (0 - 4 - 10 - 21)");
+            tipoIVA = scanner.nextInt();
+        }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
+        switch (tipoIVA){
+            case 0: servicio2.setVatRate(iva0); break;
+            case 4: servicio2.setVatRate(iva4); break;
+            case 10: servicio2.setVatRate(iva10); break;
+            case 21: servicio2.setVatRate(iva21); break;
+        }
+        salto = scanner.nextLine();
+
     }
 
     public static void printCliente(Customer customer){
@@ -56,4 +158,6 @@ public class Main {
                 "\nDirecion postal: " + customer.getPostalAddress() + " | Poblacion: " + customer.getCity() + " | Provincia: " + customer.getProvince() +
                 "\nEmail: " + customer.getEmail() + " | Telefono: " + customer.getPhoneNumber() + "\n");
     }
+
+
 }
