@@ -4,10 +4,8 @@ public interface Customer {
     public void setCode(String code);
 
     public String getName();
-    public void setName(String name);
 
     public String getIdNumber();
-    public void setIdNumber(String idNumber);
 
     public String getPostalAddress();
     public void setPostalAddress(String postalAddress);
