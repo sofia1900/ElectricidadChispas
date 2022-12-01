@@ -1,4 +1,4 @@
-package com.iesam.chispas.domain.models;
+package com.iesam.chispas.presentation;
 
 import com.iesam.chispas.domain.models.Invoice;
 

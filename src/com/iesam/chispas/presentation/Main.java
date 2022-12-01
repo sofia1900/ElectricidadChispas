@@ -2,11 +2,9 @@ package com.iesam.chispas.presentation;
 
 import com.iesam.chispas.domain.models.*;
 import com.iesam.chispas.domain.usecase.AddCustomerUseCase;
-import com.iesam.chispas.domain.usecase.GetCustomerUseCase;
 
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Date;
 
