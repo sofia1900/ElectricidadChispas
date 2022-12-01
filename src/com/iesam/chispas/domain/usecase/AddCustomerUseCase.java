@@ -4,8 +4,14 @@ import com.iesam.chispas.data.MenCustomerDataStore;
 import com.iesam.chispas.domain.models.Customer;
 
 public class AddCustomerUseCase {
+
+    private CustomerDataStore customerDataStore;
+
+    public AddCustomerUseCase (CustomerDataStore customerDataStore){
+        this.customerDataStore = customerDataStore;
+    }
+
     public void execute(Customer customer){
-        CustomerDataStore customerDataStore = new MenCustomerDataStore();
-        customerDataStore.saveCustomer(customer);
+        this.customerDataStore.saveCustomer(customer);
     }
 }
