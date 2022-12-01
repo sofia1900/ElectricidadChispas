@@ -64,8 +64,6 @@ public class Main {
         addCustomerUseCase.execute(autonomo);
         addCustomerUseCase.execute(sociedad);
 
-        GetCustomerUseCase getCustomerUseCase = new GetCustomerUseCase();
-        List<Customer> customers = getCustomerUseCase.execute();
 
         //Crear los tipos de IVA:
         VatRate iva0 = new VatRate();

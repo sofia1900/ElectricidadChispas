@@ -7,12 +7,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class MenCustomerDataStore implements CustomerDataStore {
-    private Map<String, Customer> dataStore = new TreeMap<String, Customer>();
+    private Map<String, Customer> dataStore = new TreeMap<>();
 
     @Override
-    public void saveCustomer(Customer customer) {
-        dataStore.put(customer.getCode(), customer);
-    }
+    public void saveCustomer(Customer customer) {dataStore.put(customer.getCode(), customer);}
 
     @Override
     public void deleteCustomer(Customer customer) {
