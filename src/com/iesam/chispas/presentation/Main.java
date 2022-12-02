@@ -1,6 +1,5 @@
 package com.iesam.chispas.presentation;
-import com.iesam.chispas.data.CustomerDataStore;
-import com.iesam.chispas.data.MenCustomerDataStore;
+import com.iesam.chispas.data.*;
 import com.iesam.chispas.domain.models.*;
 import com.iesam.chispas.domain.usecase.*;
 
@@ -88,9 +87,7 @@ public class Main {
             printCliente(customers3.get(i));
         }
 
-        /*
-
-        //Crear los tipos de IVA:
+        //Crear los tipos de IVA
         VatRate iva0 = new VatRate();
         iva0.setType(0);
         VatRate iva4 = new VatRate();
@@ -99,6 +96,43 @@ public class Main {
         iva10.setType(10);
         VatRate iva21 = new VatRate();
         iva21.setType(21);
+
+        //Guardar los tipos de IVA con los CASOS DE USO DEL IVA creados:
+        VatRateDataStore vatRateDataStore = new MenVatRateDataStore();
+        //caso de uso que me permite añadir un tipo de iva
+        AddVatRateUseCase addVatRateUseCase = new AddVatRateUseCase(vatRateDataStore);
+        addVatRateUseCase.execute(iva0);
+        addVatRateUseCase.execute(iva4);
+        addVatRateUseCase.execute(iva10);
+        addVatRateUseCase.execute(iva21);
+        //caso de uso para ver todos los tipos de iva almecenados
+        ListVatRateUseCase listVatRateUseCase = new ListVatRateUseCase(vatRateDataStore);
+        List<VatRate> vatRates = listVatRateUseCase.execute();
+        for (int i = 0 ; i<vatRates.size() ; i++){
+            System.out.println(vatRates.get(i).getType());
+        }
+        //caso de uso para eliminar un tipo de iva y volver a visualizar los almacenados
+        DeleteVatRateUseCase deleteVatRateUseCase = new DeleteVatRateUseCase(vatRateDataStore);
+        System.out.println("----- ELIMINADO TIPO DE IVA 0 -----");
+        deleteVatRateUseCase.execute(iva0);
+        List<VatRate> vatRates1 = listVatRateUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
+        for (int i = 0 ; i<vatRates1.size() ; i++) {
+            System.out.println(vatRates1.get(i).getType());
+        }
+        //caso de uso para modificar el cliente sociedad
+        System.out.println("----- MODIFICAR TIPO DE IVA -----");
+        UpdateVatRateUseCase updateVatRateUseCase = new UpdateVatRateUseCase(vatRateDataStore);
+        System.out.println("Introduce el tipo de IVA");
+        iva4.setType(scanner.nextInt());
+        String salto = scanner.nextLine(); //Esto es para que se coma el salto de linea que produce el scanner.nextInt
+        updateVatRateUseCase.execute(iva4);
+        List<VatRate> vatRates2 = listVatRateUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
+        for (int i = 0 ; i<vatRates2.size() ; i++) {
+            System.out.println(vatRates2.get(i).getType());
+        }
+        // Caso de uso para coger un tipo de iva por su typo:
+            //Esto será utilizado en cada uno de las lineas de venta
+        GetVatRateUseCase getVatRateUseCase = new GetVatRateUseCase(vatRateDataStore);
 
         //Producto1
         Product bombilla = new Product();
@@ -118,12 +152,12 @@ public class Main {
             tipoIVA = scanner.nextInt();
         }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
         switch (tipoIVA){
-            case 0: bombilla.setVatRate(iva0);
-            case 4: bombilla.setVatRate(iva4);
-            case 10: bombilla.setVatRate(iva10);
-            case 21: bombilla.setVatRate(iva21);
+            case 0: bombilla.setVatRate(getVatRateUseCase.execute(iva0.getType())); break;
+            case 4: bombilla.setVatRate(getVatRateUseCase.execute(iva4.getType())); break;
+            case 10: bombilla.setVatRate(getVatRateUseCase.execute(iva10.getType())); break;
+            case 21: bombilla.setVatRate(getVatRateUseCase.execute(iva21.getType())); break;
         }
-        String salto = scanner.nextLine(); //Esto es para que se coma el salto de linea que produce el scanner.nextInt
+        salto = scanner.nextLine();
 
         //Producto2
         Product cable = new Product();
@@ -143,10 +177,10 @@ public class Main {
             tipoIVA = scanner.nextInt();
         }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
         switch (tipoIVA){
-            case 0: cable.setVatRate(iva0);
-            case 4: cable.setVatRate(iva4);
-            case 10: cable.setVatRate(iva10);
-            case 21: cable.setVatRate(iva21);
+            case 0: cable.setVatRate(getVatRateUseCase.execute(iva0.getType())); break;
+            case 4: cable.setVatRate(getVatRateUseCase.execute(iva4.getType())); break;
+            case 10: cable.setVatRate(getVatRateUseCase.execute(iva10.getType())); break;
+            case 21: cable.setVatRate(getVatRateUseCase.execute(iva21.getType())); break;
         }
         salto = scanner.nextLine();
 
@@ -164,10 +198,10 @@ public class Main {
             tipoIVA = scanner.nextInt();
         }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
         switch (tipoIVA){
-            case 0: servicio1.setVatRate(iva0); break;
-            case 4: servicio1.setVatRate(iva4); break;
-            case 10: servicio1.setVatRate(iva10); break;
-            case 21: servicio1.setVatRate(iva21); break;
+            case 0: servicio1.setVatRate(getVatRateUseCase.execute(iva0.getType())); break;
+            case 4: servicio1.setVatRate(getVatRateUseCase.execute(iva4.getType())); break;
+            case 10: servicio1.setVatRate(getVatRateUseCase.execute(iva10.getType())); break;
+            case 21: servicio1.setVatRate(getVatRateUseCase.execute(iva21.getType())); break;
         }
         salto = scanner.nextLine();
 
@@ -185,14 +219,50 @@ public class Main {
             tipoIVA = scanner.nextInt();
         }while ( tipoIVA!=0 && tipoIVA != 4 && tipoIVA != 10 && tipoIVA != 21 );
         switch (tipoIVA){
-            case 0: servicio2.setVatRate(iva0); break;
-            case 4: servicio2.setVatRate(iva4); break;
-            case 10: servicio2.setVatRate(iva10); break;
-            case 21: servicio2.setVatRate(iva21); break;
+            case 0: servicio2.setVatRate(getVatRateUseCase.execute(iva0.getType())); break;
+            case 4: servicio2.setVatRate(getVatRateUseCase.execute(iva4.getType())); break;
+            case 10: servicio2.setVatRate(getVatRateUseCase.execute(iva10.getType())); break;
+            case 21: servicio2.setVatRate(getVatRateUseCase.execute(iva21.getType())); break;
         }
         salto = scanner.nextLine();
 
+        //Casos de uso para las lineas de venta:
+        SalesLineDataStore salesLineDataStore = new MenSalesLineDataStore();
+        //Caso de uso para almacenar las lineas de venta creadas:
+        AddSalesLineUseCase addSalesLineUseCase = new AddSalesLineUseCase(salesLineDataStore);
+        addSalesLineUseCase.execute(bombilla);
+        addSalesLineUseCase.execute(cable);
+        addSalesLineUseCase.execute(servicio1);
+        addSalesLineUseCase.execute(servicio2);
+        //Ver todas las lineas de venta creadas
+        ListSalesLineUseCase listSalesLineUseCase = new ListSalesLineUseCase(salesLineDataStore);
+        List<SalesLine> salesLines = listSalesLineUseCase.execute();
+        for (int i = 0 ; i < salesLines.size() ; i++){
+            printSalesLine(salesLines.get(i));
+        }
+        //Caso de uso para eliminar el servicio 2
+        DeleteSalesLineUseCase deleteSalesLineUseCase = new DeleteSalesLineUseCase(salesLineDataStore);
+        System.out.println(" ---- ELIMINANDO SERVICIO 2 ----");
+        deleteSalesLineUseCase.execute(servicio2);
+        List<SalesLine> salesLines1 = listSalesLineUseCase.execute();
+        for (int i = 0 ; i < salesLines1.size() ; i++){
+            printSalesLine(salesLines1.get(i));
+        }
+        //Modificar una linea de venta
+        UpdateSalesLineUseCase updateSalesLineUseCase = new UpdateSalesLineUseCase(salesLineDataStore);
+        System.out.println("--- MODIFICANDO BOMBILLA ---");
+        bombilla.setPrice(scanner.nextDouble());
+        updateSalesLineUseCase.execute(bombilla);
+        List<SalesLine> salesLines2 = listSalesLineUseCase.execute();
+        for (int i = 0 ; i < salesLines2.size() ; i++){
+            printSalesLine(salesLines2.get(i));
+        }
+
+
         //Factura Autonomo
+            //Utilizando los casos de uso de factura
+        InvoiceDataStore invoiceDataStore = new MenInvoiceDataStore();
+
         Invoice facturaAutonomo = new Invoice();
         System.out.println("Introduce el codigo de la factura");
         facturaAutonomo.setCode(scanner.nextLine());
@@ -201,11 +271,29 @@ public class Main {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha = sdf.parse(fechaComoTexto);
         facturaAutonomo.setDate(fecha);
+
+            //Como alternativa a introducir los clientes y lineas de venta: mostrar todas las posibilidades y utiliza el caso de uso Get.
+            /* Ejemplo para introducir un cliente:
+                List<SalesLine> salesLines3 = listSalesLineUseCase.execute();
+                for (int i = 0 ; i < salesLines3.size() ; i++){
+                    printSalesLine(salesLines3.get(i));
+                }
+                System.out.println("Introduce el codigo del cliente que quiere añadir");
+                String codCliente = scanner.next();
+                GetCustomerUseCase getCustomerUseCase = new GetCustomerUseCase(customerDataStore);
+
+                facturaAutonomo.setSelfEmployed(getCustomerUseCase.execute(codCliente));
+             */
+
         facturaAutonomo.setSelfEmployed(autonomo);
         facturaAutonomo.addProduct(bombilla);
         facturaAutonomo.addService(servicio1);
         facturaAutonomo.setBaseAmount(facturaAutonomo.getBaseAmount());
-        facturaAutonomo.setTotal(facturaAutonomo.getTotal());
+        CalculateTotalUseCase calculateTotalUseCase = new CalculateTotalUseCase(invoiceDataStore);
+        facturaAutonomo.setTotal(calculateTotalUseCase.execute(facturaAutonomo)); //Utiliza el caso de uso de calcular total
+
+        //Caso de uso para guardar la factura
+        
 
         //Imprimir factura
         System.out.println("\nFactura AUTONOMO \n");
@@ -233,14 +321,17 @@ public class Main {
         InvoicePrinter impFacturaSociedad = new InvoicePrinter();
         impFacturaSociedad.print(facturaSociedad);
 
-         */
-
     }
 
     public static void printCliente(Customer customer){
         System.out.println("\nCodigo: " + customer.getCode() + " | Nombre: " + customer.getName() + " | DNI/CIF: " + customer.getIdNumber() +
                 "\nDirecion postal: " + customer.getPostalAddress() + " | Poblacion: " + customer.getCity() + " | Provincia: " + customer.getProvince() +
                 "\nEmail: " + customer.getEmail() + " | Telefono: " + customer.getPhoneNumber() + "\n");
+    }
+
+    public static void printSalesLine (SalesLine salesLine){
+        System.out.println("\nCodigo: " + salesLine.getCode() + " | Nombre: " + salesLine.getName() +
+                "\nPrecio: " + salesLine.getPrice()  + "\n");
     }
 
 }

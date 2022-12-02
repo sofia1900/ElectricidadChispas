@@ -25,8 +25,9 @@ public class MenInvoiceDataStore implements InvoiceDataStore{
         return dataStore.get(code);
     }
     @Override
-    public void calculateTotalInvoice(Invoice invoice) {
-        System.out.println("5€");
+    public Double calculateTotalInvoice(Invoice invoice) {
+        Double precio = 5.0;
+        return precio;
     }
 
 

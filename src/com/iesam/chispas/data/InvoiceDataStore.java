@@ -7,6 +7,6 @@ public interface InvoiceDataStore {
     void updateInvoice (Invoice invoice);
     List<Invoice> getAllInvoice();
     Invoice findById(String code);
-    void calculateTotalInvoice (Invoice invoice);
+    Double calculateTotalInvoice (Invoice invoice);
 
 }
