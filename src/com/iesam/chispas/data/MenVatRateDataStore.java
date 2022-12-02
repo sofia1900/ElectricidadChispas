@@ -13,7 +13,7 @@ public class MenVatRateDataStore implements VatRateDataStore{
 
     @Override
     public void deleteVatRate(VatRate vatRate) {
-        dataStore.remove(vatRate);
+        dataStore.remove(vatRate.getType());
     }
 
     @Override

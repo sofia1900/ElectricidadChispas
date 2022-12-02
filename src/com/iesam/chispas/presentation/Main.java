@@ -1,10 +1,12 @@
 package com.iesam.chispas.presentation;
-
+import com.iesam.chispas.data.CustomerDataStore;
+import com.iesam.chispas.data.MenCustomerDataStore;
 import com.iesam.chispas.domain.models.*;
-import com.iesam.chispas.domain.usecase.AddCustomerUseCase;
+import com.iesam.chispas.domain.usecase.*;
 
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Date;
 
@@ -33,8 +35,7 @@ public class Main {
         autonomo.setEmail(scanner.nextLine());
         System.out.println("Introduce el TELEFONO del autonomo");
         autonomo.setPhoneNumber(scanner.nextLine());
-
-        printCliente(autonomo);
+        //printCliente(autonomo);
 
         //Sociedad
         Company sociedad = new Company();
@@ -54,14 +55,40 @@ public class Main {
         sociedad.setEmail(scanner.nextLine());
         System.out.println("Introduce el TELEFONO de la sociedad");
         sociedad.setPhoneNumber(scanner.nextLine());
+        //printCliente(sociedad);
 
-        printCliente(sociedad);
-
+        //CASOS DE USO DE CLIENTES:
+        CustomerDataStore customerDataStore = new MenCustomerDataStore();
         //caso de uso que me permite añadir un cliente
-        AddCustomerUseCase addCustomerUseCase = new AddCustomerUseCase();
+        AddCustomerUseCase addCustomerUseCase = new AddCustomerUseCase(customerDataStore);
         addCustomerUseCase.execute(autonomo);
         addCustomerUseCase.execute(sociedad);
+        //caso de uso para ver todos los clientes almacenados
+        ListCustomersUseCase listCustomersUseCase = new ListCustomersUseCase(customerDataStore);
+        List<Customer> customers = listCustomersUseCase.execute();
+        for (int i = 0 ; i<customers.size() ; i++){
+            printCliente(customers.get(i));
+        }
+        //caso de uso para eliminar un cliente y volver a visualizar los almacenados
+        DeleteCustomerUseCase deleteCustomerUseCase = new DeleteCustomerUseCase(customerDataStore);
+        System.out.println("----- ELIMINADO AUTOMO -----");
+        deleteCustomerUseCase.execute(autonomo);
+        List<Customer> customers2 = listCustomersUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
+        for (int i = 0 ; i<customers2.size() ; i++) {
+            printCliente(customers2.get(i));
+        }
+        //caso de uso para modificar el cliente sociedad
+        System.out.println("----- MODIFICAR NOMBRE SOCIEDAD -----");
+        UpdateCustomerUseCase updateCustomerUseCase = new UpdateCustomerUseCase(customerDataStore);
+        System.out.println("Introduce el NOMBRE de la sociedad");
+        sociedad.setBussinesName(scanner.nextLine());
+        updateCustomerUseCase.execute(sociedad);
+        List<Customer> customers3 = listCustomersUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
+        for (int i = 0 ; i<customers3.size() ; i++) {
+            printCliente(customers3.get(i));
+        }
 
+        /*
 
         //Crear los tipos de IVA:
         VatRate iva0 = new VatRate();
@@ -206,6 +233,8 @@ public class Main {
         InvoicePrinter impFacturaSociedad = new InvoicePrinter();
         impFacturaSociedad.print(facturaSociedad);
 
+         */
+
     }
 
     public static void printCliente(Customer customer){
@@ -213,6 +242,5 @@ public class Main {
                 "\nDirecion postal: " + customer.getPostalAddress() + " | Poblacion: " + customer.getCity() + " | Provincia: " + customer.getProvince() +
                 "\nEmail: " + customer.getEmail() + " | Telefono: " + customer.getPhoneNumber() + "\n");
     }
-
 
 }

@@ -8,5 +8,4 @@ public interface CustomerDataStore {
     void updateCustomer (Customer customer);
     List<Customer> getAllCustomer();
     Customer findById(String code);
-
 }

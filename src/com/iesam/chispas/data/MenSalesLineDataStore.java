@@ -15,7 +15,7 @@ public class MenSalesLineDataStore implements SalesLineDataStore{
     }
     @Override
     public void deleteSalesLine(SalesLine salesLine) {
-        dataStore.remove(salesLine);
+        dataStore.remove(salesLine.getCode());
     }
     @Override
     public void updateSalesLine(SalesLine salesLine) {
