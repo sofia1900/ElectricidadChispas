@@ -234,8 +234,8 @@ public class Main {
         addSalesLineUseCase.execute(servicio1);
         addSalesLineUseCase.execute(servicio2);
         //Ver todas las lineas de venta creadas
-        ListSalesLineUseCase listSalesLineUseCase = new ListSalesLineUseCase(salesLineDataStore);
-        List<SalesLine> salesLines = listSalesLineUseCase.execute();
+        ListSalesLinesUseCase listSalesLinesUseCase = new ListSalesLinesUseCase(salesLineDataStore);
+        List<SalesLine> salesLines = listSalesLinesUseCase.execute();
         for (int i = 0 ; i < salesLines.size() ; i++){
             printSalesLine(salesLines.get(i));
         }
@@ -243,7 +243,7 @@ public class Main {
         DeleteSalesLineUseCase deleteSalesLineUseCase = new DeleteSalesLineUseCase(salesLineDataStore);
         System.out.println(" ---- ELIMINANDO SERVICIO 2 ----");
         deleteSalesLineUseCase.execute(servicio2);
-        List<SalesLine> salesLines1 = listSalesLineUseCase.execute();
+        List<SalesLine> salesLines1 = listSalesLinesUseCase.execute();
         for (int i = 0 ; i < salesLines1.size() ; i++){
             printSalesLine(salesLines1.get(i));
         }
@@ -252,7 +252,7 @@ public class Main {
         System.out.println("--- MODIFICANDO BOMBILLA ---");
         bombilla.setPrice(scanner.nextDouble());
         updateSalesLineUseCase.execute(bombilla);
-        List<SalesLine> salesLines2 = listSalesLineUseCase.execute();
+        List<SalesLine> salesLines2 = listSalesLinesUseCase.execute();
         for (int i = 0 ; i < salesLines2.size() ; i++){
             printSalesLine(salesLines2.get(i));
         }
