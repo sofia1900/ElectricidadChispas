@@ -2,7 +2,6 @@ package com.iesam.chispas.presentation;
 import com.iesam.chispas.data.*;
 import com.iesam.chispas.domain.models.*;
 import com.iesam.chispas.domain.usecase.*;
-
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.List;
