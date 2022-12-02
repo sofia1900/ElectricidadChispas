@@ -293,13 +293,31 @@ public class Main {
         facturaAutonomo.setTotal(calculateTotalUseCase.execute(facturaAutonomo)); //Utiliza el caso de uso de calcular total
 
         //Caso de uso para guardar la factura
+        AddInvoiceUseCase addInvoiceUseCase = new AddInvoiceUseCase(invoiceDataStore);
+        addInvoiceUseCase.execute(facturaAutonomo);
+        //Caso de uso para listar todas las facturas utilizando la clase InvoicePrinter
+        ListInvoicesUseCase listInvoicesUseCase = new ListInvoicesUseCase(invoiceDataStore);
+        InvoicePrinter impFacturaAutonomo = new InvoicePrinter();
+        List<Invoice> invoices = listInvoicesUseCase.execute();
+        for (int i = 0 ; i < invoices.size() ; i++){
+            impFacturaAutonomo.print(invoices.get(i));
+        }
+        //caso de uso para modificar el codigo de una factura
+        UpdateInvoiceUseCase updateInvoiceUseCase = new UpdateInvoiceUseCase(invoiceDataStore);
+        System.out.println("Introduce el nuevo codigo para la factura");
+        facturaAutonomo.setCode(scanner.next());
+        updateInvoiceUseCase.execute(facturaAutonomo);
+        List<Invoice> invoices1 = listInvoicesUseCase.execute();
+        for (int i = 0 ; i < invoices1.size() ; i++){
+            impFacturaAutonomo.print(invoices1.get(i));
+        }
 
-
+        /*
         //Imprimir factura
         System.out.println("\nFactura AUTONOMO \n");
         InvoicePrinter impFacturaAutonomo = new InvoicePrinter();
         impFacturaAutonomo.print(facturaAutonomo);
-
+        */
 
         //Factura Sociedad
         Invoice facturaSociedad = new Invoice();
@@ -316,10 +334,20 @@ public class Main {
         facturaSociedad.setBaseAmount(facturaSociedad.getBaseAmount());
         facturaSociedad.setTotal(facturaSociedad.getTotal());
 
+        //Caso de uso para guardar la factura
+        addInvoiceUseCase.execute(facturaSociedad);
+        //Caso de uso para listar todas las facturas utilizando la clase InvoicePrinter
+        List<Invoice> invoices2 = listInvoicesUseCase.execute();
+        for (int i = 0 ; i < invoices2.size() ; i++){
+            impFacturaAutonomo.print(invoices2.get(i));
+        }
+
+        /*
         //Imprimir factura
         System.out.println("\n FACTURA SOCIEDAD\n");
         InvoicePrinter impFacturaSociedad = new InvoicePrinter();
         impFacturaSociedad.print(facturaSociedad);
+        */
 
     }
 
