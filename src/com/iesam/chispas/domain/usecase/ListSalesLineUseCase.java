@@ -4,7 +4,9 @@ import com.iesam.chispas.domain.models.SalesLine;
 import java.util.List;
 
 public class ListSalesLineUseCase {
-
+    /**
+     * Caso de uso que permite listar todas las lineas de venta guardadas
+     */
     private SalesLineDataStore salesLineDataStore;
     public ListSalesLineUseCase(SalesLineDataStore salesLineDataStore){
         this.salesLineDataStore = salesLineDataStore;

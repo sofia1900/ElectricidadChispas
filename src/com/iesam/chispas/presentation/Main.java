@@ -293,7 +293,7 @@ public class Main {
         facturaAutonomo.setTotal(calculateTotalUseCase.execute(facturaAutonomo)); //Utiliza el caso de uso de calcular total
 
         //Caso de uso para guardar la factura
-        
+
 
         //Imprimir factura
         System.out.println("\nFactura AUTONOMO \n");
