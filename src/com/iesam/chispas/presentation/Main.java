@@ -358,6 +358,8 @@ public class Main {
         for (int i = 0 ; i < invoices2.size() ; i++){
             impFacturaAutonomo.print(invoices2.get(i));
         }
+        /*Tambien existen casos de uso para modificar el cliente y para eliminar las lineas
+            de venta introducidas en las facturas */
 
         /*
         //Imprimir factura
