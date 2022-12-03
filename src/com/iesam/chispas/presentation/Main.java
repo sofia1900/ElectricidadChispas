@@ -68,9 +68,10 @@ public class Main {
         for (int i = 0 ; i<customers.size() ; i++){
             printCliente(customers.get(i));
         }
-        //caso de uso para eliminar un cliente y volver a visualizar los almacenados - probado - comentado para crear las facturas
+        //caso de uso para eliminar un cliente y volver a visualizar los almacenados
+            // probado - comentado para crear las facturas
  /*     DeleteCustomerUseCase deleteCustomerUseCase = new DeleteCustomerUseCase(customerDataStore);
-        System.out.println("----- ELIMINADO AUTOMO -----");
+        System.out.println("----- ELIMINADO AUTONOMO -----");
         deleteCustomerUseCase.execute(autonomo);
         List<Customer> customers2 = listCustomersUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
         for (int i = 0 ; i<customers2.size() ; i++) {
@@ -113,14 +114,15 @@ public class Main {
             System.out.println(vatRates.get(i).getType());
         }
         //caso de uso para eliminar un tipo de iva y volver a visualizar los almacenados
-        DeleteVatRateUseCase deleteVatRateUseCase = new DeleteVatRateUseCase(vatRateDataStore);
+        // probado - comentado para poder utilizar
+ /*       DeleteVatRateUseCase deleteVatRateUseCase = new DeleteVatRateUseCase(vatRateDataStore);
         System.out.println("----- ELIMINADO TIPO DE IVA 0 -----");
         deleteVatRateUseCase.execute(iva0);
         List<VatRate> vatRates1 = listVatRatesUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
         for (int i = 0 ; i<vatRates1.size() ; i++) {
             System.out.println(vatRates1.get(i).getType());
         }
-        //caso de uso para modificar el cliente sociedad
+ */       //caso de uso para modificar el cliente sociedad
         System.out.println("----- MODIFICAR TIPO DE IVA 4 -----");
         UpdateVatRateUseCase updateVatRateUseCase = new UpdateVatRateUseCase(vatRateDataStore);
         System.out.println("Introduce el tipo de IVA");
@@ -131,6 +133,8 @@ public class Main {
         for (int i = 0 ; i<vatRates2.size() ; i++) {
             System.out.println(vatRates2.get(i).getType());
         }
+
+
         // Caso de uso para coger un iva por su tipo:
             //Esto será utilizado en cada uno de las lineas de venta.
             /*Tambien se podría utilizar ListVatRatesUseCase antes de pedir el tipo de iva
@@ -244,7 +248,8 @@ public class Main {
         for (int i = 0 ; i < salesLines.size() ; i++){
             printSalesLine(salesLines.get(i));
         }
-        //Caso de uso para eliminar el servicio 2 -- Probado -- Comentado para poder hacer las facturas
+        //Caso de uso para eliminar el servicio 2
+            // Probado -- Comentado para poder hacer las facturas
   /*    DeleteSalesLineUseCase deleteSalesLineUseCase = new DeleteSalesLineUseCase(salesLineDataStore);
         System.out.println(" ---- ELIMINANDO SERVICIO 2 ----");
         deleteSalesLineUseCase.execute(servicio2);
@@ -278,13 +283,13 @@ public class Main {
         Date fecha = sdf.parse(fechaComoTexto);
         facturaAutonomo.setDate(fecha);
 
-            /*Como alternativa a introducir los clientes y lineas de venta: mostrar todas las
+            /*Como alternativa a introducir los clientes y líneas de venta: mostrar todas las
             posibilidades (List) y utilizar el caso de uso Get.
-            Para poder hacerlo hay que añadir el metodo setCustomer a la clase Invoice
-            y el metodo setSaleLine a la clase Invoice. Además, haabría que modificar la
-            clase InvoicePrinter para utilizar en esta clase los metodos anteriores. */
+            Para poder hacerlo hay que añadir el metodo setCustomer y el metodo setSaleLine
+            a la clase Invoice. Además, haabría que modificar la
+            clase InvoicePrinter para emplear en esta clase los metodos nuevos. */
 
-/*          // Ejemplo para introducir un cliente:
+/*          // Ejemplo para introducir un cliente de la manera anterior:
                 System.out.println("Clientes disponibles");
                 List<SalesLine> salesLines3 = listSalesLinesUseCase.execute();
                 for (int i = 0 ; i < salesLines3.size() ; i++){
@@ -296,7 +301,6 @@ public class Main {
 
                facturaAutonomo.setCustomer(getCustomerUseCase.execute(codCliente));
 */
-
         facturaAutonomo.setSelfEmployed(autonomo);
         facturaAutonomo.addProduct(bombilla);
         facturaAutonomo.addService(servicio1);

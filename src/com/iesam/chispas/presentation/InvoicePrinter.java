@@ -1,5 +1,4 @@
 package com.iesam.chispas.presentation;
-
 import com.iesam.chispas.domain.models.Invoice;
 
 public class InvoicePrinter {
