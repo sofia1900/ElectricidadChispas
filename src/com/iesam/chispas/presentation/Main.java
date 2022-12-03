@@ -131,10 +131,10 @@ public class Main {
         for (int i = 0 ; i<vatRates2.size() ; i++) {
             System.out.println(vatRates2.get(i).getType());
         }
-        // Caso de uso para coger un tipo de iva por su typo:
+        // Caso de uso para coger un iva por su tipo:
             //Esto será utilizado en cada uno de las lineas de venta.
-            /*Tambien se podría utilizar ListVatRatesUseCase para que el usuario sepa siempre
-              los tipos de iva que tiene disponibles */
+            /*Tambien se podría utilizar ListVatRatesUseCase antes de pedir el tipo de iva
+             para que el usuario sepa siempre los que tiene disponibles */
         GetVatRateUseCase getVatRateUseCase = new GetVatRateUseCase(vatRateDataStore);
 
         //Producto1
@@ -277,21 +277,25 @@ public class Main {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         Date fecha = sdf.parse(fechaComoTexto);
         facturaAutonomo.setDate(fecha);
-        /*
-            //Como alternativa a introducir los clientes y lineas de venta: mostrar todas las posibilidades y utiliza el caso de uso Get.
-               // Ejemplo para introducir un cliente:
+
+            /*Como alternativa a introducir los clientes y lineas de venta: mostrar todas las
+            posibilidades (List) y utilizar el caso de uso Get.
+            Para poder hacerlo hay que añadir el metodo setCustomer a la clase Invoice
+            y el metodo setSaleLine a la clase Invoice. Además, haabría que modificar la
+            clase InvoicePrinter para utilizar en esta clase los metodos anteriores. */
+
+/*          // Ejemplo para introducir un cliente:
                 System.out.println("Clientes disponibles");
                 List<SalesLine> salesLines3 = listSalesLinesUseCase.execute();
                 for (int i = 0 ; i < salesLines3.size() ; i++){
                     printSalesLine(salesLines3.get(i));
                 }
                 System.out.println("Introduce el codigo del cliente que quiere añadir");
-                String codCliente = scanner.next();
+                String codCliente = scanner.nextLine();
                 GetCustomerUseCase getCustomerUseCase = new GetCustomerUseCase(customerDataStore);
-                    /*Para poder hacer lo siguiente, he tenido que añadir el metodo
-                      setCustomer a la clase Invoice */
-        //        facturaAutonomo.setCustomer(getCustomerUseCase.execute(codCliente));
 
+               facturaAutonomo.setCustomer(getCustomerUseCase.execute(codCliente));
+*/
 
         facturaAutonomo.setSelfEmployed(autonomo);
         facturaAutonomo.addProduct(bombilla);
@@ -314,6 +318,7 @@ public class Main {
         UpdateInvoiceUseCase updateInvoiceUseCase = new UpdateInvoiceUseCase(invoiceDataStore);
         System.out.println("Introduce el nuevo codigo para la factura");
         facturaAutonomo.setCode(scanner.next());
+        salto = scanner.nextLine();
         updateInvoiceUseCase.execute(facturaAutonomo);
         List<Invoice> invoices1 = listInvoicesUseCase.execute();
         for (int i = 0 ; i < invoices1.size() ; i++){

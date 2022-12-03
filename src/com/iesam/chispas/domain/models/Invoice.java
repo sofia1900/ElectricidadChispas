@@ -15,11 +15,6 @@ public class Invoice {
     private SelfEmployed selfEmployed;
     private Company company;
 
-    //Añadido para poder utilizar getCustomerUseCase
-        /*Realmente lo que se introduce es un cliente en general. Se tendría que cambiar del diagrama UML:
-          unir la clase invoice con la interfaz customer. */
-    private Customer customer;
-
     //Metodos
     public String getCode(){return code;}
     public void setCode(String code){this.code = code;}
@@ -40,14 +35,15 @@ public class Invoice {
     public void setBaseAmount(Double baseAmount){this.baseAmount = baseAmount;}
 
     public Double getTotal(){
-        total = 0.0;
+        //Modifico para que salta el total del caso de uso CalculateTotal
+    /*    total = 0.0;
         for (Integer i = 0 ; i < products.size(); i ++){
             total = total + (products.get(i).getPrice() + (products.get(i).getPrice()*products.get(i).getVatRate().getType()/100));
         }
         for (Integer j = 0 ; j < services.size(); j++){
             total = total + (services.get(j).getPrice() + (services.get(j).getPrice()*services.get(j).getVatRate().getType()/100));
         }
-        return total;
+    */    return total;
     }
     public void setTotal(Double total){this.total = total;}
 
@@ -63,7 +59,4 @@ public class Invoice {
     public Company getCompany(){return company;}
     public void setCompany(Company company){this.company = company;}
 
-    //Añadido para poder utilizar getCustomerUseCase
-    public Customer getCustomer(){return customer;}
-    public void setCustomer(Customer customer){this.customer = customer;}
 }
