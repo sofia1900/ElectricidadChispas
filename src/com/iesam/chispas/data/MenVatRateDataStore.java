@@ -5,10 +5,10 @@ import java.util.Map;
 import java.util.TreeMap;
 
 public class MenVatRateDataStore implements VatRateDataStore{
-    private Map<String, VatRate> dataStore = new TreeMap<>();
+    private Map<Integer, VatRate> dataStore = new TreeMap<>();
     @Override
     public void saveVatRate(VatRate vatRate) {
-        dataStore.put(vatRate.getType().toString(), vatRate);
+        dataStore.put(vatRate.getType(), vatRate);
     }
 
     @Override
@@ -18,7 +18,7 @@ public class MenVatRateDataStore implements VatRateDataStore{
 
     @Override
     public void updateVatRate(VatRate vatRate) {
-        dataStore.replace(vatRate.getType().toString(), vatRate);
+        dataStore.replace(vatRate.getType(), vatRate);
     }
 
     @Override

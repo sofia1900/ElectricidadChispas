@@ -6,6 +6,11 @@ public class InvoicePrinter {
     public void print(Invoice invoice){
         System.out.println("Factura: " + invoice.getCode() + "|" + invoice.getDate());
 
+/*        System.out.println("Cliente: " + invoice.getCustomer().getIdNumber() + " | " + invoice.getCustomer().getName() +
+                " | " + invoice.getCustomer().getPostalAddress() + " | " + invoice.getCustomer().getCity() + " | " +
+                invoice.getCustomer().getProvince() + " | " + invoice.getCustomer().getEmail());
+*/
+// Modificado debido a que no se introduce un tipo concreto de cliente, sino un cliente.
         if (invoice.getSelfEmployed()!= null) {
             System.out.println("Cliente: " + invoice.getSelfEmployed().getIdNumber() + " | " + invoice.getSelfEmployed().getName() +
                     " | " + invoice.getSelfEmployed().getPostalAddress() + " | " + invoice.getSelfEmployed().getCity() + " | " +

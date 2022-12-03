@@ -15,6 +15,11 @@ public class Invoice {
     private SelfEmployed selfEmployed;
     private Company company;
 
+    //Añadido para poder utilizar getCustomerUseCase
+        /*Realmente lo que se introduce es un cliente en general. Se tendría que cambiar del diagrama UML:
+          unir la clase invoice con la interfaz customer. */
+    private Customer customer;
+
     //Metodos
     public String getCode(){return code;}
     public void setCode(String code){this.code = code;}
@@ -57,4 +62,8 @@ public class Invoice {
 
     public Company getCompany(){return company;}
     public void setCompany(Company company){this.company = company;}
+
+    //Añadido para poder utilizar getCustomerUseCase
+    public Customer getCustomer(){return customer;}
+    public void setCustomer(Customer customer){this.customer = customer;}
 }
