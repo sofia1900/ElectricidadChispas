@@ -105,8 +105,8 @@ public class Main {
         addVatRateUseCase.execute(iva10);
         addVatRateUseCase.execute(iva21);
         //caso de uso para ver todos los tipos de iva almecenados
-        ListVatRateUseCase listVatRateUseCase = new ListVatRateUseCase(vatRateDataStore);
-        List<VatRate> vatRates = listVatRateUseCase.execute();
+        ListVatRatesUseCase listVatRatesUseCase = new ListVatRatesUseCase(vatRateDataStore);
+        List<VatRate> vatRates = listVatRatesUseCase.execute();
         for (int i = 0 ; i<vatRates.size() ; i++){
             System.out.println(vatRates.get(i).getType());
         }
@@ -114,7 +114,7 @@ public class Main {
         DeleteVatRateUseCase deleteVatRateUseCase = new DeleteVatRateUseCase(vatRateDataStore);
         System.out.println("----- ELIMINADO TIPO DE IVA 0 -----");
         deleteVatRateUseCase.execute(iva0);
-        List<VatRate> vatRates1 = listVatRateUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
+        List<VatRate> vatRates1 = listVatRatesUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
         for (int i = 0 ; i<vatRates1.size() ; i++) {
             System.out.println(vatRates1.get(i).getType());
         }
@@ -125,7 +125,7 @@ public class Main {
         iva4.setType(scanner.nextInt());
         String salto = scanner.nextLine(); //Esto es para que se coma el salto de linea que produce el scanner.nextInt
         updateVatRateUseCase.execute(iva4);
-        List<VatRate> vatRates2 = listVatRateUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
+        List<VatRate> vatRates2 = listVatRatesUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
         for (int i = 0 ; i<vatRates2.size() ; i++) {
             System.out.println(vatRates2.get(i).getType());
         }
