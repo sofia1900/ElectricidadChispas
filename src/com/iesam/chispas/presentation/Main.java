@@ -349,7 +349,7 @@ public class Main {
         facturaSociedad.addProduct(cable);
         facturaSociedad.addService(servicio2);
         facturaSociedad.setBaseAmount(facturaSociedad.getBaseAmount());
-        facturaSociedad.setTotal(facturaSociedad.getTotal());
+        facturaSociedad.setTotal(calculateTotalUseCase.execute(facturaAutonomo)); //Utiliza el caso de uso de calcular total
 
         //Caso de uso para guardar la factura
         addInvoiceUseCase.execute(facturaSociedad);
