@@ -114,8 +114,8 @@ public class Main {
             System.out.println(vatRates.get(i).getType());
         }
         //caso de uso para eliminar un tipo de iva y volver a visualizar los almacenados
-        // probado - comentado para poder utilizar
- /*       DeleteVatRateUseCase deleteVatRateUseCase = new DeleteVatRateUseCase(vatRateDataStore);
+             // probado - comentado para poder utilizar
+ /*     DeleteVatRateUseCase deleteVatRateUseCase = new DeleteVatRateUseCase(vatRateDataStore);
         System.out.println("----- ELIMINADO TIPO DE IVA 0 -----");
         deleteVatRateUseCase.execute(iva0);
         List<VatRate> vatRates1 = listVatRatesUseCase.execute(); //Mejorable creando una funcion para ello, ya que se está repitiendo
@@ -153,7 +153,7 @@ public class Main {
         bombilla.setModel(scanner.nextLine());
         System.out.println("Introduce el PRECIO del producto");
         bombilla.setPrice(scanner.nextDouble());
-        Integer tipoIVA = 5;
+        Integer tipoIVA;
         do {
             System.out.println("Introduce el TIPO DE IVA del producto (0 - 4 - 10 - 21)");
             tipoIVA = scanner.nextInt();
@@ -178,7 +178,6 @@ public class Main {
         cable.setModel(scanner.nextLine());
         System.out.println("Introduce el PRECIO del producto");
         cable.setPrice(scanner.nextDouble());
-        tipoIVA = 5;
         do {
             System.out.println("Introduce el TIPO DE IVA del producto (0 - 4 - 10 - 21)");
             tipoIVA = scanner.nextInt();
@@ -284,9 +283,9 @@ public class Main {
         facturaAutonomo.setDate(fecha);
 
             /*Como alternativa a introducir los clientes y líneas de venta: mostrar todas las
-            posibilidades (List) y utilizar el caso de uso Get.
+            posibilidades (caso de uso List) y utilizar el caso de uso Get.
             Para poder hacerlo hay que añadir el metodo setCustomer y el metodo setSaleLine
-            a la clase Invoice. Además, haabría que modificar la
+            a la clase Invoice. Además, habría que modificar la
             clase InvoicePrinter para emplear en esta clase los metodos nuevos. */
 
 /*          // Ejemplo para introducir un cliente de la manera anterior:
@@ -358,8 +357,6 @@ public class Main {
         for (int i = 0 ; i < invoices2.size() ; i++){
             impFacturaAutonomo.print(invoices2.get(i));
         }
-        /*Tambien existen casos de uso para modificar el cliente y para eliminar las lineas
-            de venta introducidas en las facturas */
 
         /*
         //Imprimir factura
